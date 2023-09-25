@@ -25,6 +25,7 @@ jobs:
         ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.SERVER_ADDRESS }} <<EOF
           cd /home/ubuntu/JasonHorsleyTech
           git pull origin master
+          nvm use 20
           composer install --no-dev
           php artisan migrate --force
           npm install && npm run build
