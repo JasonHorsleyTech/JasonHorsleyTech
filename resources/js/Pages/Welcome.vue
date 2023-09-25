@@ -44,7 +44,8 @@ defineProps<{
         </div>
     </div>
 
-    <div class="grid place-content-center">
+    <h2>Deploy test</h2>
+    <!-- <div class="grid place-content-center">
         <iframe
             src="https://player.vimeo.com/video/868053959?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
             frameborder="0"
@@ -58,5 +59,5 @@ defineProps<{
             "
             title="2023-09-25 13-56-29"
         ></iframe>
-    </div>
+    </div> -->
 </template>
