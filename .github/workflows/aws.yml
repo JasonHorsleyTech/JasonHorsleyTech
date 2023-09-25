@@ -27,5 +27,5 @@ jobs:
           git pull origin master
           composer install --no-dev
           php artisan migrate --force
-          npm install && npm run production
+          npm install && npm run build
         EOF
