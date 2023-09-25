@@ -42,9 +42,9 @@ defineProps<{
                 >
             </template> -->
         </div>
+        <h2>Deploy test</h2>
     </div>
 
-    <h2>Deploy test</h2>
     <!-- <div class="grid place-content-center">
         <iframe
             src="https://player.vimeo.com/video/868053959?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
