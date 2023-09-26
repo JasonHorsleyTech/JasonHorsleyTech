@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from "@inertiajs/vue3";
+import { computed } from "vue";
 
 defineProps<{
     canLogin?: boolean;
@@ -7,6 +8,19 @@ defineProps<{
     laravelVersion: string;
     phpVersion: string;
 }>();
+
+let button = document.getElementById("get-location");
+let latText = document.getElementById("latitude");
+let longText = document.getElementById("longitude");
+
+const whatsmyip = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+
+        console.log(lat, long);
+    });
+};
 </script>
 
 <template>
@@ -22,7 +36,11 @@ defineProps<{
                 Jason Horsley
             </h2>
             <p>Full Stack Developer</p>
-            <p>I'm really good at fintech</p>
+            <p class="hidden fintech:block"></p>
+
+            <button class="p-4 bg-red-100 text-black" @click="whatsmyip">
+                WHats my IP?
+            </button>
         </div>
     </div>
 </template>
