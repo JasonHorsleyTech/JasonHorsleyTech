@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Professional\ResumeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/track/video/{id}', 'VideoController@create');
+
+// Route group prefixed by "professional", first route is get on /resume which uses ResumeController at invote
+Route::prefix('professional')->group(function () {
+    Route::get('/resume', [ResumeController::class, '__invoke']);
+});
