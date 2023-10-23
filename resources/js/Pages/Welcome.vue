@@ -1,26 +1,20 @@
 <script setup lang="ts">
 import { Head, Link } from "@inertiajs/vue3";
-import { computed } from "vue";
+import MarkdownIt from "markdown-it";
+import { ref } from "vue";
+const markdownContent = ref<string | null>(null);
+const htmlContent = ref<string | null>(null);
 
-defineProps<{
-    canLogin?: boolean;
-    canRegister?: boolean;
-    laravelVersion: string;
-    phpVersion: string;
-}>();
+import { onMounted } from "vue";
+const md = new MarkdownIt();
 
-let button = document.getElementById("get-location");
-let latText = document.getElementById("latitude");
-let longText = document.getElementById("longitude");
-
-const whatsmyip = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-        let lat = position.coords.latitude;
-        let long = position.coords.longitude;
-
-        console.log(lat, long);
-    });
-};
+onMounted(async () => {
+    // TODO: axios request to API route that checks IP and returns resume that's closest to whatever companies I have my resume out for.
+    // const response = await fetch("/path/to/resumes/resume1.md");
+    // const text = await response.text();
+    // markdownContent.value = text;
+    // htmlContent.value = md.render(text);
+});
 </script>
 
 <template>
@@ -36,11 +30,7 @@ const whatsmyip = () => {
                 Jason Horsley
             </h2>
             <p>Full Stack Developer</p>
-            <p class="hidden fintech:block"></p>
-
-            <button class="p-4 bg-red-100 text-black" @click="whatsmyip">
-                WHats my IP?
-            </button>
+            <div v-html="htmlContent"></div>
         </div>
     </div>
 </template>
