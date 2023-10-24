@@ -19,11 +19,13 @@ onMounted(async () => {
 <template>
     <Head title="Welcome" />
 
-    <div class="grid place-content-center bg-[#F9FAFB] min-h-screen p-4">
+    <div
+        class="grid place-content-center bg-[#F9FAFB] dark:bg-[#111827] min-h-screen p-4"
+    >
         <div
-            class="shadow-xl rounded-lg w-[36rem] min-h-[32rem] border bg-[#EDF2F7] p-4"
+            class="shadow-xl rounded-lg md:w-[36rem] min-h-[32rem] border bg-[#EDF2F7] dark:border-[#4B5563] dark:bg-[#EDF2F7]/20 p-4"
         >
-            <div class="prose" v-html="htmlContent"></div>
+            <div class="prose dark:prose-invert" v-html="htmlContent"></div>
         </div>
     </div>
 </template>
@@ -43,6 +45,10 @@ h3 {
     @apply border-t border-dashed border-gray-300 mt-4 pt-4 #{!important};
 }
 
+li::marker {
+    @apply text-[#3398DB] dark:text-white #{!important};
+}
+
 h3:first-of-type {
     @apply border-t-0 mt-0 pt-0 #{!important};
 }
@@ -53,20 +59,24 @@ blockquote {
 blockquote p {
     @apply m-0 #{!important};
 }
+
 table {
-    @apply border bg-black/25 shadow-lg rounded-lg overflow-hidden w-full #{!important};
+    @apply border bg-black/25 dark:bg-gray-500 shadow-lg rounded-lg overflow-hidden w-full #{!important};
 
     thead {
-        @apply bg-gray-100 #{!important};
+        @apply bg-gray-100 dark:bg-gray-700 #{!important};
+        tr {
+            @apply border-b-[2px] border-gray-400/50 dark:border-gray-500/50 #{!important};
+        }
     }
 
     tbody {
-        @apply bg-gray-100 #{!important};
+        @apply bg-gray-100 dark:bg-gray-900 #{!important};
     }
 
     td,
     th {
-        @apply border border-gray-300/50 px-4 py-2 #{!important};
+        @apply border border-gray-300/50 dark:border-gray-700 px-4 py-2 #{!important};
     }
 }
 </style>

@@ -12,6 +12,7 @@ class ResumeController extends Controller
      */
     public function __invoke(Request $request)
     {
+        // TODO: Get IP address
         $markdown = file_get_contents(resource_path('resumes/default.md'));
         return response()->json([
             'resume' => $markdown
