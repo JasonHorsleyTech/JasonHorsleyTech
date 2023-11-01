@@ -3,6 +3,7 @@
 use App\Http\Controllers\Professional\ResumeController;
 use App\Models\Professional\CompanyLocation;
 use App\Models\Professional\Resume;
+use Tests\ClassMethodLiberator;
 
 it('returns the default resume if no company or locations present', function () {
     // Breaks if we ever mess with RefreshDB on pest.php
@@ -15,7 +16,7 @@ it('returns the default resume if no company or locations present', function () 
 });
 
 it('returns the tampa resume for tampa IP', function () {
-    $controller = new ResumeController();
+    $controller = new ClassMethodLiberator(new ResumeController());
 
     $tampaLocation = CompanyLocation::factory()->create(['name' => 'Tampa Location', 'latitude' => 27.9506, 'longitude' => -82.4572]);
     $seattleLocation = CompanyLocation::factory()->create(['name' => 'Seattle Location', 'latitude' => 47.6062, 'longitude' => -122.3321]);
@@ -26,12 +27,12 @@ it('returns the tampa resume for tampa IP', function () {
     $tampaLocation->company->update(['resume_id' => $tampaResume->id]);
     $seattleLocation->company->update(['resume_id' => $seattleResume->id]);
 
-    $location = $controller->findClosestCompanyLocation('28.0000', '-82.5000');
+    $location = $controller->findClosestCompanyLocationWithinReasonableDistance('28.0000', '-82.5000');
     expect($location?->id)->toBe($tampaLocation->id);
 });
 
 it('returns default resume if too far from any known company locations', function () {
-    $controller = new ResumeController();
+    $controller = new ClassMethodLiberator(new ResumeController());
 
     $tampaLocation = CompanyLocation::factory()->create(['name' => 'Hong Kong Location', 'latitude' => 22.3193, 'longitude' => 114.1694]);
     $seattleLocation = CompanyLocation::factory()->create(['name' => 'Madrid Location', 'latitude' => 40.4168, 'longitude' => -3.7038]);
@@ -42,6 +43,6 @@ it('returns default resume if too far from any known company locations', functio
     $tampaLocation->company->update(['resume_id' => $tampaResume->id]);
     $seattleLocation->company->update(['resume_id' => $seattleResume->id]);
 
-    $location = $controller->findClosestCompanyLocation('27.0000', '-82.0000');
+    $location = $controller->findClosestCompanyLocationWithinReasonableDistance('27.0000', '-82.0000');
     expect($location)->toBe(null);
 });
