@@ -83,19 +83,19 @@ const fetchResume = async (resume_id: number) => {
 </script>
 
 <template>
-    <div class="grid gap-2">
+    <div>
         <div
-            class="shadow-xl rounded-lg border bg-[#EDF2F7] dark:border-[#4B5563] dark:bg-[#EDF2F7]/20 p-4"
+            class="shadow-xl rounded-lg border bg-[#EDF2F7] dark:border-[#4B5563] dark:bg-[#EDF2F7]/20 md:w-[36rem]"
         >
             <Loader v-if="!htmlContent" />
             <div
                 v-else
-                class="prose dark:prose-invert min-h-[32rem]"
+                class="prose dark:prose-invert min-h-[32rem] p-4"
                 v-html="htmlContent"
             ></div>
         </div>
 
-        <div class="ml-auto">
+        <div class="flex flex-row justify-end py-4">
             <div v-if="company_name">
                 <span>Pssst! You're {{ company_name }} right?</span>
                 <span>

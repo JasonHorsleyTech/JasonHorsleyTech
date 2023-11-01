@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $resume = Resume::factory([
-            'name' => 'Corporate resume',
+            'name' => 'Amazon resume',
             'path' => 'resumes/seeded_amazon_resume.txt',
         ])->create();
 

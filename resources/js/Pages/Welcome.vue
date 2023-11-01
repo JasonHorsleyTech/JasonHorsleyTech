@@ -16,10 +16,8 @@ const footerUrl = generateGithubLink(import.meta.url);
         </template>
 
         <div
-            class="grid place-content-center md:w-[36rem] min-h-screen p-4 gap-4"
+            class="grid place-content-center md:w-[36rem] min-h-screen gap-4 py-4"
         >
-            <div class="grid grid-cols-2 items-stretch"></div>
-
             <Resume />
         </div>
 
