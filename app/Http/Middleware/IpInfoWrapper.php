@@ -21,7 +21,7 @@ class IpInfoWrapper extends IpInfoLaravel
         // IpInfo only works on the https domain you configure it for.
         // Wrapping it so I get some data for local development.
 
-        if (env('APP_ENV') === 'local') {
+        if (env('APP_ENV') === 'local' || env('APP_ENV') === 'testing') {
             $fakeDetails = new IpInfoDetails([
                 'country' => 'US',
                 'country_name' => null,
