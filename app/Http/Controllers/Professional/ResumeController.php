@@ -23,10 +23,23 @@ class ResumeController extends Controller
     {
         $companyLocation = $this->findAndTrackCompanyLocation($request);
 
+        if ($companyLocation === null) {
+            $resume = [
+                'id' => null,
+                'name' => 'Default',
+                'content' => file_get_contents(Resume::defaultPath()),
+            ];
+        } else {
+            $resume = [
+                'id' => $companyLocation->resume_id,
+                'name' => $companyLocation->resume->name,
+                'content' => file_get_contents($companyLocation->resume->path),
+            ];
+        }
+
         return response()->json([
-            'resume' => $companyLocation === null ?
-                file_get_contents(Resume::defaultPath()) :
-                file_get_contents($companyLocation->company->resume->path)
+            'resume' => $resume,
+            'company_name' => $companyLocation?->company?->name,
         ]);
     }
 
@@ -36,7 +49,7 @@ class ResumeController extends Controller
     public function index()
     {
         return response()->json([
-            'resumes' => Resume::pluck('id', 'name')->toArray()
+            'resumes' => Resume::select('id', 'name')->get()
         ]);
     }
 
@@ -46,7 +59,9 @@ class ResumeController extends Controller
     public function show(Resume $resume)
     {
         return response()->json([
-            'resume' => file_get_contents($resume->path)
+            'id' => $resume->id,
+            'name' => $resume->name,
+            'content' => file_get_contents($resume->path),
         ]);
     }
 
