@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('resume_id')->nullable();
-            $table->ipAddress('client_ip');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
+            $table->ipAddress('client_ip')->nullable();
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
             $table->foreign('company_id')->references('id')->on('professional_companies');
             $table->foreign('resume_id')->references('id')->on('professional_resumes');
             $table->timestamps();
