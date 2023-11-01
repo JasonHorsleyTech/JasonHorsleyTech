@@ -24,5 +24,7 @@ Route::post('/track/video/{id}', 'VideoController@create');
 // Route group prefixed by "professional", first route is get on /resume which uses ResumeController at invote
 Route::prefix('professional')->group(function () {
     Route::get('/resume', [ResumeController::class, '__invoke']);
+    Route::get('/resumes', [ResumeController::class, 'index']);
+    Route::get('/resumes/{resume}', [ResumeController::class, 'show']);
 });
 
