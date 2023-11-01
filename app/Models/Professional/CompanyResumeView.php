@@ -11,6 +11,9 @@ class CompanyResumeView extends Model
 
     protected $table = 'professional_company_resume_views';
     protected $guarded = [];
+    protected $casts = [
+        'ipinfo' => 'array',
+    ];
 
     public function company()
     {
