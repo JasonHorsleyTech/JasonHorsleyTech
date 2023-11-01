@@ -12,47 +12,75 @@ use App\Models\Professional\Resume;
 class ResumeController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Find and return whatever resume I submitted to the company requesting it (or a default if no match)
+     *
+     * - Get IP from ipinfo
+     * - Get latitude and longitude from ipinfo
+     * - Find closest company location to latitude and longitude
+     * - Return the submitted resume, or bail to default resume.
      */
     public function __invoke(Request $request)
     {
-        $latitude = $request->ipinfo->latitude;
-        $longitude = $request->ipinfo->longitude;
+        $companyLocation = $this->findAndTrackCompanyLocation($request);
 
-        $closestViewLocation = $this->findClosestCompanyLocation($latitude, $longitude);
+        return response()->json([
+            'resume' => $companyLocation === null ?
+                file_get_contents(Resume::defaultPath()) :
+                file_get_contents($companyLocation->company->resume->path)
+        ]);
+    }
+
+    /**
+     * List all resumes
+     */
+    public function index()
+    {
+        return response()->json([
+            'resumes' => Resume::pluck('id', 'name')->toArray()
+        ]);
+    }
+
+    /**
+     * Get markdown for specific resume
+     */
+    public function show(Resume $resume)
+    {
+        return response()->json([
+            'resume' => file_get_contents($resume->path)
+        ]);
+    }
+
+    /**
+     * Track a company requesting a resume
+     */
+    private function findAndTrackCompanyLocation(Request $request, ?Resume $resume = null): CompanyLocation | null
+    {
+        if (!$resume) {
+            $closestViewLocation = $this->findClosestCompanyLocationWithinReasonableDistance($request->ipinfo->latitude, $request->ipinfo->longitude);
+        }
 
         $companyViewFields = [
             'company_id' => null,
             'resume_id' => null,
-            'client_ip' => $request->ipinfo->ip,
-            'latitude' => $latitude,
-            'longitude' => $longitude,
             'ipinfo' => $request->ipinfo,
         ];
 
         if ($closestViewLocation === null) {
             CompanyResumeView::create($companyViewFields);
-
-            return response()->json([
-                'resume' => file_get_contents(Resume::defaultPath())
-            ]);
+        } else {
+            CompanyResumeView::create(array_merge($companyViewFields, [
+                'company_id' => $closestViewLocation->company_id,
+                'resume_id' => $closestViewLocation->resume_id,
+            ]));
         }
 
-        $companyViewFields['company_id'] = $closestViewLocation->company_id;
-        $companyViewFields['resume_id'] = $closestViewLocation->resume_id;
-
-        CompanyResumeView::create($companyViewFields);
-
-        return response()->json([
-            // todo: optimize for one cent off your aws bill bucko
-            'resume' => file_get_contents($closestViewLocation->company->resume->path)
-        ]);
+        return $closestViewLocation;
     }
 
     /**
      * Find closest matching company based on geolocation.
      */
-    public function findClosestCompanyLocation(string | null $latitude, string | null $longitude): CompanyLocation | null
+    private function findClosestCompanyLocationWithinReasonableDistance(string | null $latitude, string | null $longitude): CompanyLocation | null
     {
         if ($latitude === null || $longitude === null || CompanyLocation::count() === 0) {
             return null;
