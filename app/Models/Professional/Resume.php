@@ -5,6 +5,7 @@ namespace App\Models\Professional;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Resume extends Model
 {
@@ -26,7 +27,7 @@ class Resume extends Model
     public function path(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => resource_path("resumes/{$value}"),
+            get: fn ($value) => Storage::disk('public')->path($value),
         );
     }
 
