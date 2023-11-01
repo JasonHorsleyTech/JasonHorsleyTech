@@ -25,3 +25,4 @@ Route::post('/track/video/{id}', 'VideoController@create');
 Route::prefix('professional')->group(function () {
     Route::get('/resume', [ResumeController::class, '__invoke']);
 });
+
