@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
 
         $resume = Resume::factory([
             'name' => 'Corporate resume',
-            'path' => 'resumes/FMeXJc623ILSjvJAwHHPFy0Ue5I92t4IVo77yIJJ.txt',
+            'path' => 'resumes/seeded_amazon_resume.txt',
         ])->create();
 
         $company = Company::factory([
@@ -85,9 +85,11 @@ class DatabaseSeeder extends Seeder
         CompanyResumeView::factory([
             'company_id' => $company->id,
             'resume_id' => $resume->id,
-            'client_ip' => '173.244.44.22',
-            'latitude' => '40.7128',
-            'longitude' => '-74.0060',
+            'ipinfo' => [
+                'client_ip' => '173.244.44.22',
+                'latitude' => '40.7128',
+                'longitude' => '-74.0060',
+            ],
         ])->create();
     }
 }
