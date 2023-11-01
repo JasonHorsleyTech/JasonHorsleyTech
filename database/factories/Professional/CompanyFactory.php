@@ -16,6 +16,7 @@ class CompanyFactory extends Factory
             'applied_at' => $this->faker->dateTimeThisYear,
             'denied_at' => $this->faker->optional()->dateTimeThisYear,
             'accepted_at' => $this->faker->optional()->dateTimeThisYear,
+            'resume_id' => null,
         ];
     }
 }
