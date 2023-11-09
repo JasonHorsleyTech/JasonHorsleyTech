@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import axios from "axios";
-import "@/../scss/ResumeMarkdownItStyleOverrides.scss";
+import "@/../scss/MarkdownItStyleOverrides.scss";
 import MarkdownIt from "markdown-it";
 import { ref } from "vue";
 import { onMounted } from "vue";

@@ -35,4 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/linkedin-privacy-policy', function () {
+    return Inertia::render('LinkedinPrivacyPolicy');
+})->name('linkedin-privacy-policy');
+
 require __DIR__.'/auth.php';
