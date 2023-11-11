@@ -14,7 +14,8 @@ class LoginController extends Controller
         $user->oauthToken()?->delete();
 
         return Socialite::driver('linkedin')
-            ->scopes(['openid', 'profile', 'email'])
+            // TODO: Get marketing scopes :)
+            // ->scopes(['openid', 'profile', 'email'])
             ->redirect();
     }
 
