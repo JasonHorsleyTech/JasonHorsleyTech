@@ -12,7 +12,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('app:generate-linkedin-post')->everyTenSeconds();
+
+        $schedule->command('app:submit-linkedin-post')->everyTenSeconds();
     }
 
     /**

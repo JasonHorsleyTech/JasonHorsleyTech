@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LinkedinPostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -33,8 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource('/linkedin-posts', LinkedinPostController::class)->only(['index', 'destroy']);
 });
 
+Route::get('/linkedin/redirect', 'Auth\LoginController@redirectToLinkedIn')->name('linkedin.redirect');
+Route::get('/linkedin/callback', 'Auth\LoginController@handleLinkedInCallback');
 Route::get('/linkedin-privacy-policy', function () {
     return Inertia::render('LinkedinPrivacyPolicy');
 })->name('linkedin-privacy-policy');
