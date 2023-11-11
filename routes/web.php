@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\LinkedinPostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -38,10 +39,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('/linkedin-posts', LinkedinPostController::class)->only(['index', 'destroy']);
 });
 
-Route::get('/linkedin/redirect', 'Auth\LoginController@redirectToLinkedIn')->name('linkedin.redirect');
-Route::get('/linkedin/callback', 'Auth\LoginController@handleLinkedInCallback');
+Route::get('/linkedin/redirect', [LoginController::class, 'redirectToLinkedIn'])->name('linkedin.redirect');
+Route::get('/linkedin/callback', [LoginController::class, 'handleLinkedInCallback']);
 Route::get('/linkedin-privacy-policy', function () {
     return Inertia::render('LinkedinPrivacyPolicy');
 })->name('linkedin-privacy-policy');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
