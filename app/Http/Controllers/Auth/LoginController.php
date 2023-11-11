@@ -13,7 +13,9 @@ class LoginController extends Controller
         $user = auth()->user();
         $user->oauthToken()?->delete();
 
-        return Socialite::driver('linkedin')->redirect();
+        return Socialite::driver('linkedin')
+            ->scopes(['openid', 'profile', 'email'])
+            ->redirect();
     }
 
     public function handleLinkedInCallback()
