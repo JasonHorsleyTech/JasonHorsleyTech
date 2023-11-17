@@ -45,4 +45,8 @@ Route::get('/linkedin-privacy-policy', function () {
     return Inertia::render('LinkedinPrivacyPolicy');
 })->name('linkedin-privacy-policy');
 
+Route::get('/cowboy-coders', function () {
+    return Inertia::render('CowboyCoders');
+})->name('cowboy-coders');
+
 require __DIR__ . '/auth.php';

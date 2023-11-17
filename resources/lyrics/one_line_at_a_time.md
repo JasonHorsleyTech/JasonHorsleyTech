@@ -1,3 +1,5 @@
+# One line at a time
+
 ## Verse 1
 Well I had a site, back two-thousand-n-three
 Just a wordpress forum for close to free 
@@ -58,7 +60,7 @@ And I ar-ki-tected some boxes and arrowed lines
 
 I was hired, they though I was swell | Assigned a 
 10 point ticket, said "Give em hell"
-But the work was a <div> no one else could vert align.
+But the work was a `<div>` no one else could vert align.
 
 ## Verse 6
 I slapped on a flex box, item center class

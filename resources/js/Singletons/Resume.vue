@@ -96,25 +96,31 @@ const fetchResume = async (resume_id: number) => {
         </div>
 
         <div class="flex flex-row justify-end py-4">
-            <div v-if="company_name">
-                <span>Pssst! You're {{ company_name }} right?</span>
-                <span>
-                    This is the resume I sent you, but I'll let you peak at the
-                    others too.
-                </span>
-            </div>
-            <select v-model="selectedResumeId">
-                <option value="null" disabled selected>
-                    Select a different resume
-                </option>
-                <option
-                    v-for="resume in resumes"
-                    :key="resume.id"
-                    :value="resume.id"
-                >
-                    {{ resume.name }}
-                </option>
-            </select>
+            <a :href="route('cowboy-coders')" class="w-1/2">
+                Here are my accordion based tech centric reinterpretation of
+                country songs, WIP
+            </a>
+            <template class="hidden">
+                <div v-if="company_name">
+                    <span>Pssst! You're {{ company_name }} right?</span>
+                    <span>
+                        This is the resume I sent you, but I'll let you peak at
+                        the others too.
+                    </span>
+                </div>
+                <select v-model="selectedResumeId">
+                    <option value="null" disabled selected>
+                        Select a different resume
+                    </option>
+                    <option
+                        v-for="resume in resumes"
+                        :key="resume.id"
+                        :value="resume.id"
+                    >
+                        {{ resume.name }}
+                    </option>
+                </select>
+            </template>
         </div>
     </div>
 </template>
