@@ -95,14 +95,17 @@ const fetchResume = async (resume_id: number) => {
             ></div>
         </div>
 
-        <div class="flex flex-row justify-end py-4">
+        <div class="py-4">
             <a
                 :href="route('cowboy-coders')"
-                class="text-white underline cursor-pointer"
+                class="text-blue-800 dark:text-blue-300 underline cursor-pointer text-left"
             >
-                Also, here are my accordion based tech centric reinterpretation of
-                country songs, WIP
+                Also, here are my accordion based tech centric reinterpretation
+                of country songs, WIP
             </a>
+        </div>
+
+        <div class="flex flex-row justify-end py-4">
             <template class="hidden">
                 <div v-if="company_name">
                     <span>Pssst! You're {{ company_name }} right?</span>
