@@ -9,6 +9,7 @@ import { ref } from "vue";
 const props = defineProps<{
     rawMarkdown?: string;
     apiEndpoint?: string;
+    appearance?: null | "tight";
 }>();
 
 const md = new MarkdownIt();
@@ -42,6 +43,7 @@ onMounted(async () => {
         <div
             v-else
             class="prose dark:prose-invert min-h-[32rem] p-4"
+            :class="props.appearance"
             v-html="content"
         ></div>
     </div>

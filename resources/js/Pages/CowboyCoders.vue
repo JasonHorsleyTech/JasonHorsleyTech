@@ -11,7 +11,7 @@ console.log(route("lyrics.show", { song: "one_line_at_a_time" }));
             <Head title="Welcome" />
         </template>
         <div
-            class="flex flex-col lg:grid place-content-center grid-cols-2 flex-nowrap h-[100vh] md:w-[36rem] lg:w-full max-w-7xl lg: min-h-screen gap-4 p-4"
+            class="flex flex-col lg:grid place-content-center grid-cols-2 flex-nowrap h-[90vh] md:w-[36rem] lg:w-full max-w-7xl gap-4 p-4"
         >
             <div style="padding: 66.67% 0 0 0; position: relative">
                 <iframe
@@ -30,9 +30,10 @@ console.log(route("lyrics.show", { song: "one_line_at_a_time" }));
             </div>
 
             <div
-                class="relative grow mb-8 overflow-y-scroll rounded-lg lg:h-[32rem]"
+                class="relative grow overflow-y-scroll rounded-lg lg:h-[32rem]"
             >
                 <PrettyMarkdown
+                    appearance="tight"
                     :api-endpoint="
                         route('lyrics.show', { song: 'one_line_at_a_time' })
                     "

@@ -96,7 +96,10 @@ const fetchResume = async (resume_id: number) => {
         </div>
 
         <div class="flex flex-row justify-end py-4">
-            <a :href="route('cowboy-coders')" class="w-1/2">
+            <a
+                :href="route('cowboy-coders')"
+                class="w-1/2 text-white underline cursor-pointer"
+            >
                 Here are my accordion based tech centric reinterpretation of
                 country songs, WIP
             </a>
