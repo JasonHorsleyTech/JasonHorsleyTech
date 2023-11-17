@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->setupAmazonResume();
 
         (new LinkedinPostSeeder())->run();
+
+        (new GardenSeeder())->run();
     }
 
     private function setupNovaAdmin(): void

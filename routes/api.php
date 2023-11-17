@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GardenSaveController;
 use App\Http\Controllers\Professional\ResumeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,8 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/track/video/{id}', 'VideoController@create');
-
 // Route group prefixed by "professional", first route is get on /resume which uses ResumeController at invote
 Route::prefix('professional')->group(function () {
     Route::get('/resume', [ResumeController::class, '__invoke']);
@@ -28,3 +27,4 @@ Route::prefix('professional')->group(function () {
     Route::get('/resumes/{resume}', [ResumeController::class, 'show']);
 });
 
+Route::post('/gardens/{garden}/saves', [GardenSaveController::class, 'store'])->middleware('auth:sanctum')->name('gardens.saves.store');

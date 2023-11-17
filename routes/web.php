@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\GardenController;
+use App\Http\Controllers\GardenSaveController;
 use App\Http\Controllers\LinkedinPostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -44,5 +46,16 @@ Route::get('/linkedin/callback', [LoginController::class, 'handleLinkedInCallbac
 Route::get('/linkedin-privacy-policy', function () {
     return Inertia::render('LinkedinPrivacyPolicy');
 })->name('linkedin-privacy-policy');
+
+Route::prefix('gardens')->group(function () {
+    Route::get('/', [GardenController::class, 'index'])->name('gardens.index');
+    Route::post('/', [GardenController::class, 'store'])->name('gardens.store');
+    Route::get('/{garden}', [GardenController::class, 'show'])->name('gardens.show');
+    Route::delete('/{garden}', [GardenController::class, 'destroy'])->name('gardens.destroy');
+
+    Route::post('/{garden}/saves', [GardenSaveController::class, 'store'])->name('gardens.saves.store');
+    Route::get('/{garden}/saves/{gardenSave}', [GardenSaveController::class, 'show'])->name('gardens.saves.show');
+    Route::delete('/{garden}/saves/{gardenSave}', [GardenSaveController::class, 'destroy'])->name('gardens.saves.destroy');
+})->middleware('auth');
 
 require __DIR__ . '/auth.php';
