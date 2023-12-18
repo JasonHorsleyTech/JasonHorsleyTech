@@ -37,23 +37,10 @@ We had a lean four-person engineering team, and about twice as many stacks to su
 * **Operational Hub**: Engineered an all-in-one internal management system to optimize CRM, due diligence, and marketing workflows.
 * **MV Native**: Pioneered a mobile-responsive iteration of the investment portal using Vue Native, and later Swift.
 
-#### Technical Skillset
-
-| Frontend   | Backend      | Finance |
-| ---------- | ------------ | ------- |
-| Vue2       | Laravel      | Stripe  |
-| React      | Laravel Nova | Synapse |
-| Tailwind   | PhpUnit      |         |
-| Bulma      | MySQL        |         |
-| Bootstrap  |              |         |
-| Cypress    |              |         |
-| Vue Native |              |         |
-| Swift      |              |         |
-
 ### Pubbly - 2019 to 2015
 Experimental edtech initiative by a New York-based publisher. Sole full-time developer for an ambitious, fast-paced venture.
 
-Our main focus was on the Global Learning XPrize competition, an Elon Musk charity project to further education in historically empoverished countries. Our open sourced entry allowed for rapid creation of interactive e-book templates, which could then be duplicated, translated, packaged and delivered via custom android system images.
+Our main focus was on the Global Learning XPrize competition, an Elon Musk charity project to further education in historically empoverish countries. Our open sourced entry allowed for rapid creation of interactive e-book templates, which could then be duplicated, translated, packaged and delivered via custom android system images.
 
 #### Responsibilities
 
