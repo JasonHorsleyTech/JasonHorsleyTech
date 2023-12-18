@@ -27,7 +27,7 @@ class Resume extends Model
     public function path(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Storage::disk('public')->path($value),
+            get: fn (?string $value) => $value ? Storage::disk('public')->path($value) : null,
         );
     }
 
