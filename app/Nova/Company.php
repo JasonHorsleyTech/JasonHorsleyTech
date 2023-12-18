@@ -3,13 +3,10 @@
 namespace App\Nova;
 
 use App\Models\Professional\Company as CompanyModel;
-use App\Models\Professional\Resume;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Datetime;
-use Laravel\Nova\Fields\HasOne;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Company extends Resource
