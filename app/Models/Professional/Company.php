@@ -10,6 +10,15 @@ class Company extends Model
     use HasFactory;
 
     protected $table = 'professional_companies';
+
+    public $timestamps = true;
+    
+    protected $casts = [
+        'applied_at' => 'datetime',
+        'denied_at' => 'datetime',
+        'accepted_at' => 'datetime',
+    ];
+
     protected $guarded = [];
 
     public function locations()
