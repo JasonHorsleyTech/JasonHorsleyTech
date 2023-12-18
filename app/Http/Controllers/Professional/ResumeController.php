@@ -40,7 +40,7 @@ class ResumeController extends Controller
                 'resume' => [
                     'id' => $resume->id,
                     'name' => $resume->name,
-                    'content' => file_get_contents($resume->path),
+                    'content' => $resume->getResumeContent(),
                 ],
                 'company_name' => $company->name,
             ]);
@@ -51,7 +51,7 @@ class ResumeController extends Controller
                 'resume' => [
                     'id' => null,
                     'name' => 'Default',
-                    'content' => file_get_contents(Resume::defaultPath()),
+                    'content' => Resume::defaultResumeContent(),
                 ],
                 'company_name' => null,
             ]);
@@ -76,7 +76,7 @@ class ResumeController extends Controller
         return response()->json([
             'id' => $resume->id,
             'name' => $resume->name,
-            'content' => file_get_contents($resume->path),
+            'content' => $resume->getResumeContent(),
         ]);
     }
 

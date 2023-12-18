@@ -31,8 +31,13 @@ class Resume extends Model
         );
     }
 
-    public static function defaultPath(): string
+    public static function defaultResumeContent(): string
     {
-        return resource_path('resumes/default.md');
+        return file_get_contents(resource_path('resumes/default.md'));
+    }
+
+    public function getResumeContent(): string
+    {
+        return file_get_contents($this->path);
     }
 }
