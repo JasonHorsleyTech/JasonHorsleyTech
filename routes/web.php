@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\LinkedinPostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -18,14 +19,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', HomepageController::class);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

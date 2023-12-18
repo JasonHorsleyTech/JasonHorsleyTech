@@ -7,8 +7,11 @@ import { onMounted } from "vue";
 import Loader from "@/Components/Loader.vue";
 import { computed } from "vue";
 import { watch } from "vue";
-
 const md = new MarkdownIt();
+
+const props = defineProps<{
+    company_location_id: number | null;
+}>();
 
 const resume = ref<{
     id: number;
@@ -50,7 +53,9 @@ onMounted(async () => {
     resumes.value = resumeIndexResponse.data.resumes;
 
     const { data } = (await axios.get(
-        "/api/professional/resume"
+        "/api/professional/resume", {
+        params: { company_location_id: props.company_location_id },
+    }
     )) as ResumeControllerInvokeResponse;
     resume.value = data.resume;
     selectedResumeId.value = data.resume.id;
@@ -84,22 +89,13 @@ const fetchResume = async (resume_id: number) => {
 
 <template>
     <div>
-        <div
-            class="shadow-xl rounded-lg border bg-[#EDF2F7] dark:border-[#4B5563] dark:bg-[#EDF2F7]/20 md:w-[36rem]"
-        >
+        <div class="shadow-xl rounded-lg border bg-[#EDF2F7] dark:border-[#4B5563] dark:bg-[#EDF2F7]/20 md:w-[36rem]">
             <Loader v-if="!htmlContent" />
-            <div
-                v-else
-                class="prose dark:prose-invert min-h-[32rem] p-4"
-                v-html="htmlContent"
-            ></div>
+            <div v-else class="prose dark:prose-invert min-h-[32rem] p-4" v-html="htmlContent"></div>
         </div>
 
         <div class="p-4">
-            <a
-                :href="route('cowboy-coders')"
-                class="text-blue-800 dark:text-blue-300 underline cursor-pointer text-left"
-            >
+            <a :href="route('cowboy-coders')" class="text-blue-800 dark:text-blue-300 underline cursor-pointer text-left">
                 Johnny Cash dev-parody tribute.
             </a>
         </div>
@@ -117,11 +113,7 @@ const fetchResume = async (resume_id: number) => {
                     <option value="null" disabled selected>
                         Select a different resume
                     </option>
-                    <option
-                        v-for="resume in resumes"
-                        :key="resume.id"
-                        :value="resume.id"
-                    >
+                    <option v-for="resume in resumes" :key="resume.id" :value="resume.id">
                         {{ resume.name }}
                     </option>
                 </select>
