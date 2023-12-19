@@ -85,7 +85,7 @@ The lesson here is twofold:
 ## Personal
 
 #### Goal
-My career objective is financial independence within a decade, leveraging in-depth skills and open-sourced tooling.
+I am looking to move from "small team big goal" startup mentality to larger scale longer term.
 
 #### Life
 I used to live in Latin America with my wife, but after two kids we became substantially more boring.
