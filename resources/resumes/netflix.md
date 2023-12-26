@@ -1,6 +1,6 @@
 # ![My Image](/images/JasonHorsleyTechLogo.png) Jason Horsley - Developer
 
-Veteran Full Stack Engineer boasting 11 years of hands-on experience in Laravel and Vue.js ecosystems. Proven expertise in Agile environments with a focus on delivering scalable solutions in SaaS, fintech, and edtech sectors.
+Veteran Full Stack Engineer boasting 11 years of professional web experience, specializing in the Laravel/Vue ecosystems. Proven expertise in Agile environments with a focus on delivering scalable solutions in SaaS, fintech, and edtech sectors.
 
 ## Experience
 
@@ -14,9 +14,9 @@ Flat hierarchy governed by Agile principles, daily scrums, and JIRA issue tracki
 
 #### Key Contributions
 
-* **Platform Migration**: Spearheaded the migration of the core management platform from Drupal 8 to a Livewire stack, integrating Vue3 micro-SPAs to elevate modular design and higher deliverability.
-  * **Kennel Card Builder**: Created a Vue3 SPA for designing print-friendly kennel cards, offering direct canvas and DOM manipulation.
-  * **Application Manager**: Vue3 spa and *very lite* backend, allowing shelter workers to prioritize and process "adoption applications". Our attempt to collect additional user data pre-checkout (monetization step).
+* **Platform Migration**: Spearheaded the migration of the core management platform from Drupal 8 to a Livewire stack, integrating React micro-SPAs to elevate modular design and higher deliverability.
+  * **Kennel Card Builder**: Created a React SPA for designing print-friendly kennel cards, offering direct canvas and DOM manipulation.
+  * **Application Manager**: React spa and *very lite* backend, allowing shelter workers to prioritize and process "adoption applications". Our attempt to collect additional user data pre-checkout (monetization step).
 * **AdopterLuv**: Engineered a comprehensive payment and customer account management system, incorporating predictive analytics for product recommendations
 * **Payment Processor**: Co-developed a PHP Composer package to transition from Stripe to Stax without eliminating Stripe as a fallback option.
 * **MicrochipRegistry**: Led frontend architecture for this greenfield project using a Laravel, InertiaJS, and Vue3 stack, fortified with TypeScript.

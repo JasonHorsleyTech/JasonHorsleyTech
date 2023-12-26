@@ -18,8 +18,8 @@ Flat hierarchy governed by Agile principles, daily scrums, and JIRA issue tracki
   * **Kennel Card Builder**: Created a Vue3 SPA for designing print-friendly kennel cards, offering direct canvas and DOM manipulation.
   * **Application Manager**: Vue3 spa and *very lite* backend, allowing shelter workers to prioritize and process "adoption applications". Our attempt to collect additional user data pre-checkout (monetization step).
 * **AdopterLuv**: Engineered a comprehensive payment and customer account management system, incorporating predictive analytics for product recommendations
-* **MicrochipRegistry**: Led frontend architecture for this greenfield project using a Laravel, InertiaJS, and Vue3 stack, fortified with TypeScript.
 * **Payment Processor**: Co-developed a PHP Composer package to transition from Stripe to Stax without eliminating Stripe as a fallback option.
+* **MicrochipRegistry**: Led frontend architecture for this greenfield project using a Laravel, InertiaJS, and Vue3 stack, fortified with TypeScript.
 
 ### MicroVentures - Software Engineer, 2019 to 2021
 
