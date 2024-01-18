@@ -48,12 +48,6 @@ Route::post('/test', function (Request $request) {
     return response()->json([
         'version' => 'v2',
         'content' => [
-            'messages' => [
-                [
-                    'type' => 'text',
-                    'text' => "uhuh..."
-                ]
-            ],
             'external_message_callback' => [
                 'url' => 'https://lordoftongs.com/api/test',
                 'method' => 'post',
