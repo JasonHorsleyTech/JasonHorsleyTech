@@ -37,18 +37,45 @@ Route::post('/test', function (Request $request) {
     $liveChatUrl = $request->input('live_chat_url');
     $lastTextInput = $request->input('last_input_text');
 
+    info('--- new conversation ---');
     info('conversationId: ' . $conversationId);
     info('userName: ' . $userName);
     info('liveChatUrl: ' . $liveChatUrl);
     info('lastTextInput: ' . $lastTextInput);
-    
+
+
+    // Test shit: If the last text input ends with a period, then we reply.
+    if ($lastTextInput !== 'done') {
+        return response()->json([
+            'version' => 'v2',
+            'content' => [
+                'messages' => [
+                    [
+                        'type' => 'text',
+                        'text' => "... say 'done' when done."
+                    ]
+                ],
+                'external_message_callback' => [
+                    'url' => 'https://lordoftongs.com/api/test',
+                    'method' => 'post',
+                    'headers' => [],
+                    'payload' => [
+                        'id' => '{{user_id}}',
+                        'last_input_text' => '{{last_input_text}}',
+                    ],
+                    'timeout' => 600
+                ]
+            ]
+        ]);
+    }
+
     return response()->json([
         'version' => 'v2',
         'content' => [
             'messages' => [
                 [
                     'type' => 'text',
-                    'text' => "$lastTextInput you say??? no way!"
+                    'text' => "Got it."
                 ]
             ]
         ]
