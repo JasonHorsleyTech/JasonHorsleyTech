@@ -32,8 +32,20 @@ Route::prefix('professional')->group(function () {
 Route::get('/lyrics/{song}', [LyricController::class, '__invoke'])->name('lyrics.show');
 
 Route::post('/test', function (Request $request) {
+    $conversationId = $request->input('id');
+    $userName = $request->input('name');
+    $liveChatUrl = $request->input('live_chat_url');
+    $lastTextInput = $request->input('last_input_text');
+    
     return response()->json([
-        'message' => 'Hello World!',
-        'request' => $request->all(),
+        'version' => 'v2',
+        'content' => [
+            'messages' => [
+                [
+                    'type' => 'text',
+                    'text' => "$lastTextInput you say??? no way!"
+                ]
+            ]
+        ]
     ]);
 });
