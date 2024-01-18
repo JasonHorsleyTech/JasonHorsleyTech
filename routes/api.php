@@ -45,39 +45,37 @@ Route::post('/test', function (Request $request) {
 
 
     // Test shit: If the last text input ends with a period, then we reply.
-    if ($lastTextInput !== 'done') {
-        return response()->json([
-            'version' => 'v2',
-            'content' => [
-                'messages' => [
-                    [
-                        'type' => 'text',
-                        'text' => "... say 'done' when done."
-                    ]
-                ],
-                'external_message_callback' => [
-                    'url' => 'https://lordoftongs.com/api/test',
-                    'method' => 'post',
-                    'headers' => [],
-                    'payload' => [
-                        'id' => '{{user_id}}',
-                        'last_input_text' => '{{last_input_text}}',
-                    ],
-                    'timeout' => 600
-                ]
-            ]
-        ]);
-    }
-
     return response()->json([
         'version' => 'v2',
         'content' => [
             'messages' => [
                 [
                     'type' => 'text',
-                    'text' => "Got it."
+                    'text' => "uhuh..."
                 ]
+            ],
+            'external_message_callback' => [
+                'url' => 'https://lordoftongs.com/api/test',
+                'method' => 'post',
+                'headers' => [],
+                'payload' => [
+                    'id' => '{{user_id}}',
+                    'last_input_text' => '{{last_input_text}}',
+                ],
+                'timeout' => 600
             ]
         ]
     ]);
+
+    // return response()->json([
+    //     'version' => 'v2',
+    //     'content' => [
+    //         'messages' => [
+    //             [
+    //                 'type' => 'text',
+    //                 'text' => "Got it."
+    //             ]
+    //         ]
+    //     ]
+    // ]);
 });
