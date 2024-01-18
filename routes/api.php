@@ -37,39 +37,45 @@ Route::post('/test', function (Request $request) {
     $liveChatUrl = $request->input('live_chat_url');
     $lastTextInput = $request->input('last_input_text');
 
-    info('--- new conversation ---');
-    info('conversationId: ' . $conversationId);
-    info('userName: ' . $userName);
-    info('liveChatUrl: ' . $liveChatUrl);
-    info('lastTextInput: ' . $lastTextInput);
+    info('new request');
+    info($conversationId);
+    info($userName);
+    info($liveChatUrl);
+    info($lastTextInput);
 
+    // 'user_still_responding' | 'gpt_follow_up_question' | 'gpt_closing_remark'
+    $step = 'user_still_responding';
 
-    // Test shit: If the last text input ends with a period, then we reply.
-    return response()->json([
-        'version' => 'v2',
-        'content' => [
-            'external_message_callback' => [
-                'url' => 'https://lordoftongs.com/api/test',
-                'method' => 'post',
-                'headers' => [],
-                'payload' => [
-                    'id' => '{{user_id}}',
-                    'last_input_text' => '{{last_input_text}}',
-                ],
-                'timeout' => 600
+    if ($step === 'user_still_responding') {
+        return response()->json([
+            'version' => 'v2',
+            'content' => [
+                "gpt_response_to_user" => null,
+                "topic_finished" => false,
+                "user_still_responding" => true,
             ]
-        ]
-    ]);
+        ]);
+    }
 
-    // return response()->json([
-    //     'version' => 'v2',
-    //     'content' => [
-    //         'messages' => [
-    //             [
-    //                 'type' => 'text',
-    //                 'text' => "Got it."
-    //             ]
-    //         ]
-    //     ]
-    // ]);
+    if ($step === 'gpt_follow_up_question') {
+        return response()->json([
+            'version' => 'v2',
+            'content' => [
+                "gpt_response_to_user" => 'Can you elaborate',
+                "topic_finished" => false,
+                "user_still_responding" => true,
+            ]
+        ]);
+    }
+
+    if ($step === 'gpt_closing_remark') {
+        return response()->json([
+            'version' => 'v2',
+            'content' => [
+                "gpt_response_to_user" => 'OK, understood',
+                "topic_finished" => true,
+                "user_still_responding" => false,
+            ]
+        ]);
+    }
 });
