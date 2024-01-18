@@ -37,10 +37,10 @@ Route::post('/test', function (Request $request) {
     $liveChatUrl = $request->input('live_chat_url');
     $lastTextInput = $request->input('last_input_text');
 
-    log('conversationId: ' . $conversationId);
-    log('userName: ' . $userName);
-    log('liveChatUrl: ' . $liveChatUrl);
-    log('lastTextInput: ' . $lastTextInput);
+    info('conversationId: ' . $conversationId);
+    info('userName: ' . $userName);
+    info('liveChatUrl: ' . $liveChatUrl);
+    info('lastTextInput: ' . $lastTextInput);
     
     return response()->json([
         'version' => 'v2',
