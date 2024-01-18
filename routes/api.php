@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::post('/track/video/{id}', 'VideoController@create');
+// Route::post('/track/video/{id}', 'VideoController@create');``
 
 // Route group prefixed by "professional", first route is get on /resume which uses ResumeController at invote
 Route::prefix('professional')->group(function () {
@@ -30,3 +30,10 @@ Route::prefix('professional')->group(function () {
 });
 
 Route::get('/lyrics/{song}', [LyricController::class, '__invoke'])->name('lyrics.show');
+
+Route::post('/test', function (Request $request) {
+    return response()->json([
+        'message' => 'Hello World!',
+        'request' => $request->all(),
+    ]);
+});
