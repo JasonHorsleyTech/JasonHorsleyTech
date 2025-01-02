@@ -1,3 +1,7 @@
+# Tuesday morning
+
+Sung to the tune of "Sunday Morning" by Johnny Cash
+
 ## Verse 1
 
 Well I show up tuesday mornin' but I couldn't start the standup without my shirt
@@ -15,6 +19,7 @@ So I let out a big exhale, open zoom and put the IDE away.
 --- Actual song below ---
 
 ## Chrous
+
 On a Sunday mornin' sidewalk
 I'm wishin', Lord, that I was **stoned**
 'Cause there's somethin' in a Sunday
@@ -25,6 +30,7 @@ Of the sleepin' city sidewalk
 And Sunday mornin' comin' _down_
 
 ## Verse 4
+
 In the park I saw a daddy
 With a laughin' little girl that he was **swingin**'
 And I stopped beside a Sunday school
@@ -35,6 +41,7 @@ And it echoed through the canyons
 Like the disappearin' dreams of _yesterday_
 
 ## Chorus
+
 On a Sunday mornin' sidewalk
 I'm wishin', Lord, that I was **stoned**
 'Cause there's somethin' in a Sunday
